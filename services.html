@@ -7,17 +7,20 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Versuance</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html" class="active">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+ <header>
+  <div class="logo">Versuance</div>
+
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+
+  <nav id="nav-menu" class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
 
   <!-- <section class="services">
     <h2>Our Services</h2>
@@ -57,6 +60,24 @@
     <p>Proactive security audits, threat detection, and compliance services to protect your data and reputation.</p>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll("#nav-menu a");
+
+    toggleBtn.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        navMenu.classList.remove("active");
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

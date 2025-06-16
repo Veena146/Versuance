@@ -75,3 +75,24 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
     document.getElementById('newsletter-message').style.display = 'none';
   }, 5000);
 });
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll("#nav-menu a");
+
+    toggleBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+    // Close the menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+      });
+    });
+  });
+
+
+

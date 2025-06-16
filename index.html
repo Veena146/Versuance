@@ -8,18 +8,22 @@
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="logo">Versuance</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header>
+  <div class="logo">Versuance</div>
+
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+
+  <nav id="nav-menu" class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+
+  
 
   <!-- <section class="hero">
     <h1>Empowering IT Solutions for a Smarter Future</h1>
@@ -54,21 +58,43 @@
   </ul>
 </section>
 
-<!-- Chatbot -->
-<div id="chatbot">
-  <div id="chatbot-icon">💬</div>
-  <div id="chatbot-window" class="hidden">
-    <div id="chatbot-header">
-      <span>Chat with Us</span>
-      <button id="chatbot-close">&times;</button>
-    </div>
-    <div id="chatbot-messages"></div>
-    <form id="chatbot-form">
-      <input type="text" id="chatbot-input" placeholder="Type your message..." autocomplete="off" required />
-      <button type="submit">Send</button>
-    </form>
+<!-- Chat Icon -->
+<div id="chat-icon" onclick="toggleChat()" title="Chat with us">💬</div>
+
+<!-- Chat Window -->
+<div id="chat-box">
+  <div id="chat-header">Versuance Chatbot <span onclick="toggleChat()">✖</span></div>
+  <div id="chat-body">
+    <p>Hello! How can we help you today?</p>
+    <!-- Add your chatbot content or iframe here -->
   </div>
 </div>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll("#nav-menu a");
+
+    toggleBtn.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        navMenu.classList.remove("active");
+      });
+    });
+  });
+</script>
+<script>
+  function toggleChat() {
+    const chatBox = document.getElementById("chat-box");
+    chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
+  }
+</script>
 
 </body>
 </html>

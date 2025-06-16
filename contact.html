@@ -7,35 +7,135 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Versuance</div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+ <header>
+  <div class="logo">Versuance</div>
+
+  <div class="menu-toggle" id="menu-toggle">☰</div>
+
+  <nav id="nav-menu" class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
 
   
-  <section>
+  <!-- <section>
   <h2>Contact Us</h2>
   <p>Let’s talk about how Versuance can support your next big idea or critical project.</p>
 
-  <form class="contact-form">
-    <input type="text" placeholder="Your Name" required />
-    <input type="email" placeholder="Your Email" required />
-    <textarea rows="5" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <form id="contact-form" onsubmit="return validateForm()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+
+</section> -->
+
+<section class="contact-section">
+   <p>Let’s talk about how Versuance can support your next big idea or critical project.</p>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+       
+        
+    <form id="contact-form" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
 </section>
 
 <section>
   <h2>Our Office</h2>
   <p>123 Innovation Tower,<br>Business Tech Park, Bangalore, India<br>Email: contact@versuance.com<br>Phone: +91 98765 43210</p>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    const navLinks = document.querySelectorAll("#nav-menu a");
+
+    toggleBtn.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        navMenu.classList.remove("active");
+      });
+    });
+  });
+</script>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!namePattern.test(name)) {
+      alert("Please enter a valid name (letters only).");
+      return false;
+    }
+
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    return true; // allow form to submit
+  }
+</script>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    const namePattern = /^[A-Za-z\s]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!namePattern.test(name)) {
+      alert("Name should contain letters only.");
+      return false;
+    }
+
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
+    }
+
+    alert("Form submitted successfully!");
+    return true;
+  }
+</script>
 
 </body>
 </html>
